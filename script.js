@@ -2,13 +2,19 @@ const navToggle = document.querySelector('.nav-toggle');
 const nav = document.querySelector('.nav');
 
 if (navToggle && nav) {
+  navToggle.setAttribute('aria-expanded', 'false');
+
   navToggle.addEventListener('click', () => {
-    nav.classList.toggle('open');
+    const isOpen = nav.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+    navToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
   });
 
   document.querySelectorAll('.nav a').forEach((link) => {
     link.addEventListener('click', () => {
       nav.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Open menu');
     });
   });
 }

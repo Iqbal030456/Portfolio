@@ -171,6 +171,7 @@ img {
   position: sticky;
   top: 0;
   z-index: 20;
+  isolation: isolate;
   backdrop-filter: blur(12px);
   background: rgba(13, 16, 18, 0.82);
   border-bottom: 1px solid var(--line);
@@ -870,6 +871,10 @@ section[id] {
 }
 
 @media (max-width: 720px) {
+  .container {
+    width: min(100% - 28px, 560px);
+  }
+
   body {
     cursor: auto;
   }
@@ -886,9 +891,9 @@ section[id] {
 
   .nav {
     position: absolute;
-    top: 76px;
-    left: 16px;
-    right: 16px;
+    top: calc(100% + 10px);
+    left: 14px;
+    right: 14px;
     display: none;
     flex-direction: column;
     align-items: stretch;
@@ -902,12 +907,38 @@ section[id] {
     display: flex;
   }
 
+  .nav a {
+    padding: 12px;
+  }
+
   .brand {
     font-size: 0.9rem;
   }
 
   .hero {
-    padding-top: 26px;
+    gap: 28px;
+    padding: 28px 0 12px;
+  }
+
+  .hero h1,
+  .page-title {
+    font-size: clamp(2.45rem, 13vw, 3.7rem);
+    letter-spacing: -0.06em;
+  }
+
+  .hero p,
+  .intro {
+    font-size: 1rem;
+  }
+
+  .cta-row {
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .btn {
+    min-height: 46px;
+    padding: 0 16px;
   }
 
   .highlights,
@@ -916,6 +947,140 @@ section[id] {
     grid-template-columns: 1fr;
   }
 
+  .highlights {
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .stat-card,
+  .skill-card,
+  .resume-card,
+  .inset-card {
+    padding: 20px 18px;
+    border-radius: 18px;
+  }
+
+  .section {
+    padding-top: 64px;
+  }
+
+  .section-header {
+    margin-bottom: 18px;
+  }
+
+  .section-header h2,
+  .portfolio-title {
+    font-size: clamp(1.9rem, 9vw, 2.7rem);
+  }
+
+  .portfolio-title {
+    gap: 12px;
+  }
+
+  .portfolio-title::before {
+    width: 12px;
+    height: 12px;
+  }
+
+  .content-grid,
+  .skill-page-grid,
+  .cv-wrap {
+    gap: 18px;
+  }
+
+  .avatar-box img {
+    height: 300px;
+  }
+
+  .project-card {
+    border-radius: 18px;
+  }
+
+  .project-card .project-visual {
+    min-height: 130px;
+  }
+
+  .project-info {
+    padding: 15px 16px 17px;
+  }
+
+  .project-info h3 {
+    font-size: 1.35rem;
+  }
+
+  .project-info p,
+  .cv-entry p,
+  .profile-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .float-card {
+    right: 10px;
+    bottom: 12px;
+    min-width: 150px;
+    padding: 12px 14px;
+  }
+
+  .float-card strong {
+    font-size: 1.3rem;
+  }
+
+  .stars {
+    opacity: 0.35;
+  }
+}
+
+@media (max-width: 420px) {
+  .container {
+    width: min(100% - 24px, 390px);
+  }
+
+  .site-header .container {
+    min-height: 68px;
+  }
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+  }
+
+  .hero h1,
+  .page-title {
+    font-size: clamp(2.25rem, 14vw, 3.2rem);
+  }
+
+  .cta-row .btn {
+    flex: 1 1 100%;
+  }
+
+  .hero-image-frame img {
+    height: 88vw;
+  }
+
+  .avatar-box img {
+    height: 250px;
+  }
+
+  .skill-top {
+    font-size: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
   .hero-image-frame img {
     height: 420px;
   }
